@@ -1,0 +1,55 @@
+name: Build and Deploy SA-MP Server
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'gamemodes/*.pwn'
+      - 'filterscripts/*.pwn'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Install Pawn compiler
+      run: |
+        sudo apt update
+        sudo apt install -y make g++
+        cd /tmp
+        wget https://github.com/pawn-lang/compiler/releases/download/v3.10.11/pawncc-3.10.11-linux-amd64.tar.gz
+        tar -xzf pawncc-3.10.11-linux-amd64.tar.gz
+        sudo mv pawncc /usr/local/bin/
+        sudo chmod +x /usr/local/bin/pawncc
+    
+    - name: Compile gamemodes
+      run: |
+        cd gamemodes
+        for file in *.pwn; do
+          if [ -f "$file" ]; then
+            pawncc "$file" -o "../gamemodes/${file%.pwn}.amx"
+          fi
+        done
+    
+    - name: Compile filterscripts
+      run: |
+        cd filterscripts
+        for file in *.pwn; do
+          if [ -f "$file" ]; then
+            pawncc "$file" -o "../filterscripts/${file%.pwn}.amx"
+          fi
+        done
+    
+    - name: Deploy to VPS
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USER }}
+        password: ${{ secrets.VPS_PASSWORD }}
+        script: |
+          cd /home/openmp/server
+          git pull origin master
+          docker restart samp_server
