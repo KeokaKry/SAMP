@@ -21,22 +21,31 @@ jobs:
         wget -q https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
         tar -xzf pawnc-3.10.10-linux.tar.gz
         
-        # Находим папку, где лежит компилятор
-        PAWNCC_DIR=$(dirname $(find /tmp -name "pawncc" -type f -executable 2>/dev/null | head -1))
-        echo "Found compiler in: $PAWNCC_DIR"
+        # 1. ПОКАЗЫВАЕМ СТРУКТУРУ (чтобы точно знать, что внутри)
+        echo "=== Содержимое распакованной папки ==="
+        ls -laR /tmp/pawnc-3.10.10-linux
         
-        # Копируем исполняемый файл в системную папку
-        sudo cp "$PAWNCC_DIR/pawncc" /usr/local/bin/
+        # 2. Ищем библиотеку .so во всей папке, а не только в bin
+        SO_PATH=$(find /tmp/pawnc-3.10.10-linux -name "libpawnc.so" 2>/dev/null | head -1)
+        echo "Найдена библиотека по пути: $SO_PATH"
         
-        # Копируем библиотеку .so в системную папку библиотек (если она есть в той же папке)
-        if [ -f "$PAWNCC_DIR/libpawnc.so" ]; then
-          sudo cp "$PAWNCC_DIR/libpawnc.so" /usr/local/lib/
+        # 3. Копируем исполняемый файл
+        sudo cp /tmp/pawnc-3.10.10-linux/bin/pawncc /usr/local/bin/
+        
+        # 4. Копируем библиотеку, если нашли
+        if [ -n "$SO_PATH" ]; then
+          sudo cp "$SO_PATH" /usr/local/lib/
+          sudo ldconfig
+          echo "Библиотека успешно скопирована и кэш обновлен."
+        else
+          echo "ВНИМАНИЕ: libpawnc.so не найдена в архиве!"
         fi
         
-        # Обновляем кэш разделяемых библиотек Linux
-        sudo ldconfig
+        # 5. ПРОВЕРЯЕМ зависимости перед запуском
+        echo "=== Проверка зависимостей (ldd) ==="
+        ldd /usr/local/bin/pawncc
         
-        # Проверяем, что всё работает
+        # 6. Запускаем
         pawncc -v
     
     - name: Compile gamemodes
