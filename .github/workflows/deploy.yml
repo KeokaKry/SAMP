@@ -1,52 +1,19 @@
-name: Build and Deploy SA-MP Server
+name: Deploy SA-MP Server
 
 on:
   push:
     branches: [ master ]
     paths:
-      - 'gamemodes/*.pwn'
-      - 'filterscripts/*.pwn'
+      - 'gamemodes/*.amx'
+      - 'filterscripts/*.amx'
+      - 'server.cfg'
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-    
-    - name: Install Pawn compiler
-      run: |
-        cd /tmp
-        wget -q https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
-        tar -xzf pawnc-3.10.10-linux.tar.gz
-        
-        sudo cp /tmp/pawnc-3.10.10-linux/bin/pawncc /usr/local/bin/
-        sudo cp /tmp/pawnc-3.10.10-linux/lib/libpawnc.so /usr/local/lib/
-        sudo ldconfig
-        
-        pawncc 2>&1 | head -n 1
-        echo "✅ Pawn compiler installed successfully!"
-    
-    - name: Compile gamemodes
-      run: |
-        cd gamemodes
-        for file in *.pwn; do
-          if [ -f "$file" ]; then
-            # Добавлен флаг -i../pawno/include для поиска a_samp.inc
-            pawncc "$file" -i../pawno/include -o "../gamemodes/${file%.pwn}.amx"
-          fi
-        done
-    
-    - name: Compile filterscripts
-      run: |
-        cd filterscripts
-        for file in *.pwn; do
-          if [ -f "$file" ]; then
-            # Добавлен флаг -i../pawno/include для поиска инклюдов
-            pawncc "$file" -i../pawno/include -o "../filterscripts/${file%.pwn}.amx"
-          fi
-        done
     
     - name: Deploy to VPS
       uses: appleboy/ssh-action@master
