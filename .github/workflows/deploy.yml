@@ -18,10 +18,8 @@ jobs:
     - name: Install Pawn compiler
       run: |
         cd /tmp
-        # ПРАВИЛЬНАЯ ССЫЛКА: версия 3.10.10 и имя pawnc (не pawncc)
         wget https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
         tar -xzf pawnc-3.10.10-linux.tar.gz
-        # Компилятор лежит внутри папки bin
         sudo mv bin/pawncc /usr/local/bin/
         sudo chmod +x /usr/local/bin/pawncc
         pawncc -v
