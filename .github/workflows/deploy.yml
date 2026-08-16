@@ -20,7 +20,11 @@ jobs:
         cd /tmp
         wget https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
         tar -xzf pawnc-3.10.10-linux.tar.gz
-        sudo mv bin/pawncc /usr/local/bin/
+        # Ищем pawncc в распакованной папке (где бы он ни лежал)
+        find /tmp -name "pawncc" -type f -executable
+        PAWNCC_PATH=$(find /tmp -name "pawncc" -type f -executable | head -1)
+        echo "Found pawncc at: $PAWNCC_PATH"
+        sudo cp "$PAWNCC_PATH" /usr/local/bin/pawncc
         sudo chmod +x /usr/local/bin/pawncc
         pawncc -v
     
