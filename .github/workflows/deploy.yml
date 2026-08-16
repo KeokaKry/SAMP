@@ -20,11 +20,23 @@ jobs:
         cd /tmp
         wget -q https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
         tar -xzf pawnc-3.10.10-linux.tar.gz
-        # 2>/dev/null скрывает ошибки "Permission denied", чтобы шаг не падал
-        PAWNCC_PATH=$(find /tmp -name "pawncc" -type f -executable 2>/dev/null | head -1)
-        echo "Found pawncc at: $PAWNCC_PATH"
-        sudo cp "$PAWNCC_PATH" /usr/local/bin/pawncc
-        sudo chmod +x /usr/local/bin/pawncc
+        
+        # Находим папку, где лежит компилятор
+        PAWNCC_DIR=$(dirname $(find /tmp -name "pawncc" -type f -executable 2>/dev/null | head -1))
+        echo "Found compiler in: $PAWNCC_DIR"
+        
+        # Копируем исполняемый файл в системную папку
+        sudo cp "$PAWNCC_DIR/pawncc" /usr/local/bin/
+        
+        # Копируем библиотеку .so в системную папку библиотек (если она есть в той же папке)
+        if [ -f "$PAWNCC_DIR/libpawnc.so" ]; then
+          sudo cp "$PAWNCC_DIR/libpawnc.so" /usr/local/lib/
+        fi
+        
+        # Обновляем кэш разделяемых библиотек Linux
+        sudo ldconfig
+        
+        # Проверяем, что всё работает
         pawncc -v
     
     - name: Compile gamemodes
