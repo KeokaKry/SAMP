@@ -18,11 +18,10 @@ jobs:
     - name: Install Pawn compiler
       run: |
         cd /tmp
-        wget https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
+        wget -q https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
         tar -xzf pawnc-3.10.10-linux.tar.gz
-        # Ищем pawncc в распакованной папке (где бы он ни лежал)
-        find /tmp -name "pawncc" -type f -executable
-        PAWNCC_PATH=$(find /tmp -name "pawncc" -type f -executable | head -1)
+        # 2>/dev/null скрывает ошибки "Permission denied", чтобы шаг не падал
+        PAWNCC_PATH=$(find /tmp -name "pawncc" -type f -executable 2>/dev/null | head -1)
         echo "Found pawncc at: $PAWNCC_PATH"
         sudo cp "$PAWNCC_PATH" /usr/local/bin/pawncc
         sudo chmod +x /usr/local/bin/pawncc
