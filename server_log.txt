@@ -7,33 +7,22 @@ SA-MP Dedicated Server
 ----------------------
 v0.3.7-R2, (C)2005-2015 SA-MP Team
 
-[10:13:29] 
-[10:13:29] Server Plugins
-[10:13:29] --------------
-[10:13:29]  Loading plugin: streamer
-[10:13:29]   Failed (plugins/streamer: cannot open shared object file: No such file or directory)
-[10:13:29]  Loading plugin: mysql
-[10:13:29]   Failed (plugins/mysql: cannot open shared object file: No such file or directory)
-[10:13:29]  Loaded 0 plugins.
+[10:28:49] 
+[10:28:49] Server Plugins
+[10:28:49] --------------
+[10:28:49]  Loading plugin: log-core
+[10:28:49]   Failed (plugins/log-core: cannot open shared object file: No such file or directory)
+[10:28:49]  Loading plugin: streamer
+[10:28:49]   Failed (plugins/streamer: cannot open shared object file: No such file or directory)
+[10:28:49]  Loading plugin: mysql
+[10:28:49]   Failed (plugins/mysql: cannot open shared object file: No such file or directory)
+[10:28:49]  Loaded 0 plugins.
 
-[10:13:29] 
-[10:13:29] Filterscripts
-[10:13:29] ---------------
-[10:13:29]   Loading filterscript 'ce.amx'...
-[10:13:29] 
---------------------------------------
-[10:13:29]  CamEditor by Drebin
-[10:13:29] --------------------------------------
-
-[10:13:29]   Loading filterscript 'attachedit.amx'...
-[10:13:29]   Unable to load filterscript 'attachedit.amx'.
-[10:13:29]   Loaded 1 filterscripts.
-
-[10:13:29] Script[gamemodes/new.amx]: Run time error 19: "File or function is not found"
-[10:13:29] Number of vehicle models: 0
-[11:33:34] [connection] incoming connection: 95.32.201.187:1697 id: 0
-[11:33:34] [join] Ilia_Rapira has joined the server (0:95.32.201.187)
-[11:39:09] [part] Ilia_Rapira has left the server (0:1)
+[10:28:49] Unable to start server on port: 7777. Port in use?
+[10:28:49] 
+[10:28:49] Filterscripts
+[10:28:49] ---------------
+[10:28:49]   Loading filterscript 'ce.amx'...
 
 ----------
 Loaded log file: "server_log.txt".
@@ -43,31 +32,22 @@ SA-MP Dedicated Server
 ----------------------
 v0.3.7-R2, (C)2005-2015 SA-MP Team
 
-[11:48:05] 
-[11:48:05] Server Plugins
-[11:48:05] --------------
-[11:48:05]  Loading plugin: streamer
-[11:48:05]   Failed (plugins/streamer: cannot open shared object file: No such file or directory)
-[11:48:05]  Loading plugin: mysql
-[11:48:05]   Failed (plugins/mysql: cannot open shared object file: No such file or directory)
-[11:48:05]  Loaded 0 plugins.
+[10:32:43] 
+[10:32:43] Server Plugins
+[10:32:43] --------------
+[10:32:43]  Loading plugin: log-core
+[10:32:43]   Failed (plugins/log-core: cannot open shared object file: No such file or directory)
+[10:32:43]  Loading plugin: streamer
+[10:32:43]   Failed (plugins/streamer: cannot open shared object file: No such file or directory)
+[10:32:43]  Loading plugin: mysql
+[10:32:43]   Failed (plugins/mysql: cannot open shared object file: No such file or directory)
+[10:32:43]  Loaded 0 plugins.
 
-[11:48:05] 
-[11:48:05] Filterscripts
-[11:48:05] ---------------
-[11:48:05]   Loading filterscript 'ce.amx'...
-[11:48:05] 
---------------------------------------
-[11:48:05]  CamEditor by Drebin
-[11:48:05] --------------------------------------
-
-[11:48:05]   Loading filterscript 'attachedit.amx'...
-[11:48:05]   Unable to load filterscript 'attachedit.amx'.
-[11:48:05]   Loaded 1 filterscripts.
-
-[11:48:05] Script[gamemodes/new.amx]: Run time error 19: "File or function is not found"
-[11:48:05] Number of vehicle models: 0
-[11:48:17] --- Server Shutting Down.
+[10:32:43] Unable to start server on port: 7777. Port in use?
+[10:32:43] 
+[10:32:43] Filterscripts
+[10:32:43] ---------------
+[10:32:43]   Loading filterscript 'ce.amx'...
 
 ----------
 Loaded log file: "server_log.txt".
@@ -77,30 +57,17 @@ SA-MP Dedicated Server
 ----------------------
 v0.3.7-R2, (C)2005-2015 SA-MP Team
 
-[11:48:22] 
-[11:48:22] Server Plugins
-[11:48:22] --------------
-[11:48:22]  Loading plugin: streamer
-[11:48:22]   Failed (plugins/streamer: cannot open shared object file: No such file or directory)
-[11:48:22]  Loading plugin: mysql
-[11:48:22]   Failed (plugins/mysql: cannot open shared object file: No such file or directory)
-[11:48:22]  Loaded 0 plugins.
+[10:50:30] 
+[10:50:30] Server Plugins
+[10:50:30] --------------
+[10:50:30]  Loading plugin: streamer
+[10:50:30]   Failed (plugins/streamer: cannot open shared object file: No such file or directory)
+[10:50:30]  Loading plugin: mysql
+[10:50:30]   Failed (plugins/mysql: cannot open shared object file: No such file or directory)
+[10:50:30]  Loaded 0 plugins.
 
-[11:48:22] 
-[11:48:22] Filterscripts
-[11:48:22] ---------------
-[11:48:22]   Loading filterscript 'ce.amx'...
-[11:48:22] 
---------------------------------------
-[11:48:22]  CamEditor by Drebin
-[11:48:22] --------------------------------------
-
-[11:48:22]   Loading filterscript 'attachedit.amx'...
-[11:48:22]   Unable to load filterscript 'attachedit.amx'.
-[11:48:22]   Loaded 1 filterscripts.
-
-[11:48:22] Script[gamemodes/new.amx]: Run time error 19: "File or function is not found"
-[11:48:22] Number of vehicle models: 0
-[11:49:16] [connection] incoming connection: 95.32.201.187:1496 id: 0
-[11:49:16] [join] Ilia_Rapira has joined the server (0:95.32.201.187)
-[11:51:11] [part] Ilia_Rapira has left the server (0:1)
+[10:50:30] Unable to start server on port: 7777. Port in use?
+[10:50:30] 
+[10:50:30] Filterscripts
+[10:50:30] ---------------
+[10:50:30]   Loading filterscript 'ce.amx'...

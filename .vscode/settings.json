@@ -1,0 +1,12 @@
+{
+    "files.encoding": "windows1251",
+    "editor.quickSuggestions": {
+        "comments": "on",
+        "strings": "on",
+        "other": "on"
+	},
+	"files.associations": {
+		"*.pwn": "cpp",
+		"*.inc": "cpp"
+	}
+}

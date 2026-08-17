@@ -1,0 +1,23 @@
+{ 
+    "version": "2.0.0",  
+    "type": "shell", 
+    "args": ["${workspaceRoot}\\gamemodes\\new.pwn", "-ogamemodes\\new.amx", "-;", "-("],
+    "windows":  
+    {
+        "options": {
+            "shell": {
+                "executable": "cmd.exe",
+                "args": [
+                    "/d", "/c"
+                ]
+            }
+        },
+        "command": "${workspaceRoot}\\pawno\\pawncc.exe"
+
+    },
+    "problemMatchers": [],
+    "group": {
+        "kind": "build",
+        "isDefault": true
+    }
+}  

@@ -1,0 +1,9 @@
+{
+    "version": "0.1.0",
+    "tasks": [{
+        "taskName": "compile",
+        "command": "${workspaceFolder}\\pawno\\pawncc.exe", // Could be any other shell command
+        "args": ["${relativeFile}", "-;", "-("],
+        "isShellCommand": true
+    } ]
+}
